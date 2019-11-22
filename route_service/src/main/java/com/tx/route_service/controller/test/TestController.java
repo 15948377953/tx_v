@@ -1,4 +1,4 @@
-package com.tx.route_service.controller;
+package com.tx.route_service.controller.test;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.tx.route_service.base.BaseController;

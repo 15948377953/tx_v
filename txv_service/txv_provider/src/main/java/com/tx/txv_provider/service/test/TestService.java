@@ -1,4 +1,4 @@
-package com.tx.txv_provider.service;
+package com.tx.txv_provider.service.test;
 
 import com.tx.txv_common.factory.TSingletonFactory;
 import com.tx.txv_intf.test.testInTF;
