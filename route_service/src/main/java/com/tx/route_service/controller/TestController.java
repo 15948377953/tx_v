@@ -1,7 +1,9 @@
 package com.tx.route_service.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.tx.route_service.base.BaseController;
 import com.tx.txv_common.utils.DataMap;
+import com.tx.txv_intf.test.DubboAnnotation;
 import com.tx.txv_intf.test.testInTF;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,22 +19,33 @@ public class TestController extends BaseController {
     @Value("${testName}")
     private String name;
 
-    @Autowired
-    private testInTF testInTF;
+//    @Autowired
+//    private testInTF testInTF;
+
+    @Reference
+    private DubboAnnotation dubboAnnotationTest;
 
 
     @RequestMapping("/")
-    public String test(){
-        String testdubbo = testInTF.testdubbo();
-        DataMap data=new DataMap();
-        return testdubbo;
+    public String dubboAnnotationTest(){
+        return dubboAnnotationTest.dubboAnnotationTest();
     }
 
 
-    @RequestMapping("/redisTest")
-    public String redisTest(){
-        Object redisTest = testInTF.redisTest("redisTest");
-        return redisTest.toString();
-    }
+//    @RequestMapping("/")
+//    public String test(){
+//        String testdubbo = testInTF.testdubbo();
+//        DataMap data=new DataMap();
+//        return testdubbo;
+//    }
+
+
+//    @RequestMapping("/redisTest")
+//    public String redisTest(){
+//        Object redisTest = testInTF.redisTest("redisTest");
+//        return redisTest.toString();
+//    }
+
+
 
 }

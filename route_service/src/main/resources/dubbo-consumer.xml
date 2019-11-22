@@ -1,27 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-            http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://code.alibabatech.com/schema/dubbo
-            http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+<!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"-->
+<!--       xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+<!--            http://www.springframework.org/schema/beans/spring-beans.xsd-->
+<!--            http://code.alibabatech.com/schema/dubbo-->
+<!--            http://code.alibabatech.com/schema/dubbo/dubbo.xsd">-->
 
-    <!-- 应用配置，不要与提供方相同 -->
-    <dubbo:application name="txm-dubboConsumer" />
+<!--    &lt;!&ndash; 应用配置，不要与提供方相同 &ndash;&gt;-->
+<!--    <dubbo:application name="txm-dubboConsumer" />-->
 
-    <!-- 注册中心配置，使用zookeeper作为注册中心 -->
-    <dubbo:registry address="zookeeper://120.79.42.102:2181" timeout="60000" />
-
-
-
-
-    <!--声明服务引用，与服务声明接口类型一致-->
-    <!--接口配置 -->
-    <dubbo:reference interface="com.tx.txv_intf.test.testInTF" id="dubboTestService" check="false"/>
+<!--    &lt;!&ndash; 注册中心配置，使用zookeeper作为注册中心 &ndash;&gt;-->
+<!--    <dubbo:registry address="zookeeper://120.79.42.102:2181" timeout="60000" />-->
 
 
 
 
+<!--    &lt;!&ndash;声明服务引用，与服务声明接口类型一致&ndash;&gt;-->
+<!--    &lt;!&ndash;接口配置 &ndash;&gt;-->
+<!--    <dubbo:reference interface="com.tx.txv_intf.test.testInTF" id="dubboTestService" check="false"/>-->
 
 
-</beans>
+
+
+
+
+<!--</beans>-->
