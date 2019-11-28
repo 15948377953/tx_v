@@ -5,9 +5,13 @@ import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  *  项目部署在外部tomcat(不使用springboot内嵌tomcat)
@@ -48,9 +52,33 @@ import org.springframework.context.annotation.PropertySource;
 //@ImportResource("classpath:dubbo-consumer.xml")
 @EnableDubboConfiguration//dubbo 注解方式
 public class RouteServiceApplication extends SpringBootServletInitializer {
+    private final String EXPOSE_HEADER = "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Token";
+
+
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(RouteServiceApplication.class);
+    }
+
+
+    /**
+     * 创建跨域配置项
+     * @return
+     */
+    private CorsConfiguration buildCorsConfig() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addAllowedMethod("*");
+        corsConfiguration.addExposedHeader(EXPOSE_HEADER);
+        return corsConfiguration;
+    }
+
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", buildCorsConfig());
+        return new CorsFilter(source);
     }
 
 
