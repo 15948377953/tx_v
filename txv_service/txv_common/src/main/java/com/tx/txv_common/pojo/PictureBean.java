@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 展示轮播图实体类
  */
-public class CarouseBean implements Serializable {
+public class PictureBean implements Serializable {
     private String picId;
     private String picLocation;
     private String picVideo;
@@ -15,6 +15,15 @@ public class CarouseBean implements Serializable {
     private String picDesc;
     private String status;
     private String picType;
+    private String order;
+
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
+    }
 
     public String getStatus() {
         return status;

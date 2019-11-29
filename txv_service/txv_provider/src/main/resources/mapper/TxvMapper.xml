@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tx.txv_provider.mapper.TxvMapper" >
-    <resultMap id="carouseBean" type="com.tx.txv_common.pojo.CarouseBean">
-        <id column="pic_id" property="picId"></id>
-        <result column="pic_location" property="picLocation"></result>
-        <result column="pic_video" property="picVideo"></result>
-        <result column="pic_data" property="picData"></result>
-        <result column="pic_desc" property="picDesc"></result>
-        <result column="pic_type" property="picType"></result>
-        <result column="status" property="status"></result>
+    <resultMap id="pictureBean" type="com.tx.txv_common.pojo.PictureBean">
+    <id column="pic_id" property="picId"></id>
+    <result column="pic_location" property="picLocation"></result>
+    <result column="pic_video" property="picVideo"></result>
+    <result column="pic_data" property="picData"></result>
+    <result column="pic_desc" property="picDesc"></result>
+    <result column="pic_type" property="picType"></result>
+    <result column="status" property="status"></result>
+    <result column="upload_time" property="uploadTime"></result>
+</resultMap>
+
+    <resultMap id="videoBean" type="com.tx.txv_common.pojo.VideoBean">
+        <id column="video_id" property="videoId"></id>
+        <result column="video_location" property="videoLocation"></result>
+        <result column="video_data" property="videoData"></result>
+        <result column="video_type" property="videoType"></result>
         <result column="upload_time" property="uploadTime"></result>
+        <result column="video_desc" property="videoDesc"></result>
+        <result column="status" property="status"></result>
     </resultMap>
 
 
-    <select id="getCarouseList"  resultMap="carouseBean">
-     select  * from tx_pic t where t.pic_type=#{picType} order BY t.order
+    <select id="getCarouseList"  resultMap="pictureBean">
+     select  * from tx_pic t where t.pic_type=#{picType} and t.status='1' order BY t.order
+    </select>
+
+    <select id="getPictureById"  resultMap="pictureBean">
+     select  * from tx_pic t where t.pic_id=#{picId} and t.status='1'
+    </select>
+
+    <select id="getVideoById"  resultMap="videoBean">
+     select  * from tx_video t where t.video_id=#{videoId} and t.status='1'
     </select>
 </mapper>
