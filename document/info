@@ -1,5 +1,7 @@
 ====================================pagehelper start====================================
-
+1.PageHelper.startPage(pageNum,pageSize);
+2.详见 TestBase 测试类
+依赖配置：
         <!-- pagehelper -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
