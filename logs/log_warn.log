@@ -17,3 +17,4 @@
 2019-12-11 16:51:41.805 [DubboZkclientConnector-SendThread(120.79.42.102:2181)] WARN  org.apache.zookeeper.ClientCnxn - Unable to reconnect to ZooKeeper service, session 0x16c4af0d2050321 has expired
 2019-12-11 16:55:04.080 [RMI TCP Connection(4)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
 2019-12-11 17:37:01.816 [RMI TCP Connection(3)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
+2019-12-11 22:05:03.097 [RMI TCP Connection(3)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
