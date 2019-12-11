@@ -74,6 +74,10 @@ public class RouteServiceApplication extends SpringBootServletInitializer {
         return corsConfiguration;
     }
 
+    /**
+     * 跨域是实例
+     * @return
+     */
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

@@ -28,13 +28,27 @@ public class Tx_vController {
      * 查询轮播图
      * @return
      */
+    @RequestMapping("init")
+    public Map init(){
+        return tx_vAccess.init();
+    }
+
+    /**
+     * 查询轮播图
+     * @return
+     */
     @RequestMapping("carouselList")
     public List getcCarouselList(){
         Map param =new HashMap();
         param.put("picType","1");
-        return tx_vAccess.getCarouseList(param);
+        return tx_vAccess.getPictureList(param);
     }
 
+
+    @RequestMapping("getPage")
+    public List getAll(@RequestParam Map param){
+        return tx_vAccess.getAll(param);
+    }
 
 
     /**

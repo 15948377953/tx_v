@@ -8,6 +8,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 
+import java.util.Properties;
+
 @SpringBootApplication
 //@ImportResource("classpath:dubbo-provider.xml")//dubbo XML方式
 @EnableDubboConfiguration//dubbo 注解方式
@@ -17,5 +19,8 @@ public class TxvProviderApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(TxvProviderApplication.class);
     }
+
+
+
 
 }

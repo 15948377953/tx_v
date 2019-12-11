@@ -16,6 +16,24 @@ public class PictureBean implements Serializable {
     private String status;
     private String picType;
     private String order;
+    private String picName;
+    private String score;
+
+    public String getPicName() {
+        return picName;
+    }
+
+    public void setPicName(String picName) {
+        this.picName = picName;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
+    }
 
     public String getOrder() {
         return order;

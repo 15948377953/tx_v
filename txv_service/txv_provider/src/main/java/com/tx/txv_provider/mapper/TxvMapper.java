@@ -13,5 +13,5 @@ public interface TxvMapper {
     public List<PictureBean> getCarouseList(Map param);
     public PictureBean getPictureById(Map param);
     public VideoBean getVideoById(Map param);
-
+    public List getAll(Map param);
 }

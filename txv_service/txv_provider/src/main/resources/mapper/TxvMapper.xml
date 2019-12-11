@@ -10,6 +10,8 @@
     <result column="pic_type" property="picType"></result>
     <result column="status" property="status"></result>
     <result column="upload_time" property="uploadTime"></result>
+        <result column="pic_name" property="picName"></result>
+        <result column="score" property="score"></result>
 </resultMap>
 
     <resultMap id="videoBean" type="com.tx.txv_common.pojo.VideoBean">
@@ -20,6 +22,7 @@
         <result column="upload_time" property="uploadTime"></result>
         <result column="video_desc" property="videoDesc"></result>
         <result column="status" property="status"></result>
+
     </resultMap>
 
 
@@ -33,5 +36,8 @@
 
     <select id="getVideoById"  resultMap="videoBean">
      select  * from tx_video t where t.video_id=#{videoId} and t.status='1'
+    </select>
+    <select id="getAll"   resultMap="pictureBean">
+     select  * from tx_pic t where  t.status='1'
     </select>
 </mapper>
