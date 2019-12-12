@@ -15,9 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContextAware;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //dubbo 注解
 @Service
@@ -37,7 +35,7 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
      * @return
      */
     @Override
-    public Map init() {
+    public Map init() throws Exception {
         logger.info("------");
         Map returnMap=new HashMap();
         //查询轮播图
@@ -50,9 +48,16 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
         //查询热门小说
         initMap.put("picType","3");
         List<PictureBean> hotTextList = this.getPictureList(initMap);
+        //猜你喜欢
+        initMap.remove("picType");
+        //设置分页参数
+        initMap.put("pageNum","1");
+        initMap.put("pageSize","5");
+        PageBean pageBean = this.getPageBean(initMap);
         returnMap.put("carouseList",carouseList);
         returnMap.put("hotVideoList",hotVideoList);
         returnMap.put("hotTextList",hotTextList);
+        returnMap.put("guessLike",pageBean.getItems());
         return returnMap;
     }
 
@@ -96,22 +101,50 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
 
 
     @Override
-    public PageBean getAll(Map param) {
-        Integer pageNum=0;
+    public PageBean getPageBean(Map param) throws Exception {
+        Integer currentPage=0;
         Integer pageSize=3;
-        if(param.get("pageNum")!=null){
-            pageNum = new Integer(param.get("pageNum").toString());
+        if(param.get("currentPage")!=null){
+            currentPage = new Integer(param.get("currentPage").toString());
         }
         if(param.get("pageSize")!=null){
             pageSize = new Integer(param.get("pageSize").toString());
         }
+        if(currentPage==null||pageSize==null){
+            throw new Exception("缺少分页查询参数");
+        }
         //开启分页
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(currentPage,pageSize);
         List all = txvMapper.getAll(param);
-        PageBean pageBean = new PageBean(pageNum, pageSize,all.size());
+        PageBean pageBean = new PageBean(currentPage, pageSize,all.size());
         pageBean.setItems(all);
         return pageBean;
     }
+
+    /**
+     * 猜你喜欢 随机获取5名随机观众
+     * @param param
+     * @return
+     */
+    @Override
+    public List<PictureBean> guessUlike(Map param) throws Exception {
+        List allList = txvMapper.getAll(param);
+        List result=new ArrayList();
+        int size = allList.size()-1;
+        Set indexSet=new HashSet();
+        for(int i=0;i<size;i++){
+            int index = new Random().nextInt(size);
+            if(!indexSet.contains(index)){
+                result.add(allList.get(index));
+                indexSet.add(index);
+                if(indexSet.size()==5){
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
 
 
 }

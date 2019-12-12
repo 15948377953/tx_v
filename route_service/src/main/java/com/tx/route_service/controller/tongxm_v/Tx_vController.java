@@ -36,12 +36,22 @@ public class Tx_vController {
 
 
     /**
+     * 猜你喜欢（分页查询）
+     * @return
+     */
+    @ApiOperation("猜你喜欢")
+    @RequestMapping(value="guessUlike",method = RequestMethod.POST)
+    @ApiImplicitParam(name ="param",value = "查询参数 currentPage，pageSize" )
+    public List guessUlike(@RequestParam Map param) throws Exception {
+        return tx_vAccess.guessUlike(param);
+    }
+    /**
      * 页面初始化
      * @return
      */
     @ApiOperation("页面初始化-查询轮播图/查询热门视频/查询热门小说")
     @RequestMapping(value="init",method = RequestMethod.POST)
-    public Map init(){
+    public Map init() throws Exception {
         return tx_vAccess.init();
     }
 
@@ -65,8 +75,8 @@ public class Tx_vController {
     @ApiOperation("分页查询")
     @RequestMapping(value = "getPage",method = RequestMethod.POST)
     @ApiImplicitParam(name = "param",value = "查询参数对象,pageNum:当前页码,pageSize:每页展示数",dataType = "Map")
-    public Object getAll(@RequestParam Map param){
-        PageBean all = tx_vAccess.getAll(param);
+    public Object getAll(@RequestParam Map param) throws Exception {
+        PageBean all = tx_vAccess.getPageBean(param);
         return all;
     }
 
@@ -78,7 +88,7 @@ public class Tx_vController {
      *
      */
     @ApiOperation("根据图片Id返回输出流")
-    @RequestMapping(value = "/searchPicById",method = RequestMethod.POST)
+    @RequestMapping(value = "/searchPicById")
     @ApiImplicitParam(name = "param",value = "查询参数对象",dataType = "Map")
     public Object searchPicById(@RequestParam Map param, HttpServletResponse response){
         String picId = param.get("picId").toString();
