@@ -3,10 +3,19 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <context id="DB2Tables" targetRuntime="MyBatis3">
-        <!--去掉注释-->
+        <!-- 防止部分IDE，在进行代码生成器过程中，自定义注释部分 中文乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+
+        <!-- 为生成的Java模型创建一个toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+        <!--注释生成器-->
         <commentGenerator>
-            <property name="suppressAllComments" value="true"/>
+            <!-- 是否去除自动生成的注释 true:是 false:否 -->
+            <property name="suppressAllComments" value="false" />
         </commentGenerator>
+
+
         <!--需要配置数据库连接-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://120.79.42.102:3306/myData?characterEncoding=utf-8&amp;useSSL=false"
@@ -19,11 +28,11 @@
 
         <!--指定entity生成的位置 -->
         <javaModelGenerator targetPackage="com.tx.txv_common.pojo" targetProject="../txv_common/src/main/java">
-            <property name="enableSubPackages" value="true" />
+            <property name="enableSubackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-        <!--sql映射文件生成的位置 mapper.xml-->
+        <!--sql映射文件生成的位置 mappPer.xml-->
         <sqlMapGenerator targetPackage="mapper"  targetProject="./src/main/resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>

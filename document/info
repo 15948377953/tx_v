@@ -20,7 +20,7 @@
 1.详见配置于txv_service工程的generateConfig.xml
 2.根据表生成实体类,mapper接口类,mapper.xml 和example类  只需配置 <table></table>即可
 3.运行插件mybatis-generator:generate(或者 输入以下命令： mybatis-generator:generate -e)
-
+4.https://blog.csdn.net/spring_ev/article/details/99675090
 依赖配置：
           <!-- MyBatis 逆向工程 插件 -->
             <plugin>
