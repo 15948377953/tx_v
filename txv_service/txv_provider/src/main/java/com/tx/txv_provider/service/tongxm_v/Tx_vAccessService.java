@@ -10,6 +10,8 @@ import com.tx.txv_provider.mapper.TxvMapper;
 import com.tx.txv_common.utils.Base64Util;
 import com.tx.txv_provider.utils.ApplicationContextUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContextAware;
 
@@ -17,10 +19,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//dubbo 注解
 @Service
+//spring 注解
 @org.springframework.stereotype.Service
-@Slf4j
 public class Tx_vAccessService implements Tx_vAccessIntf {
+
+    private static final Logger logger = LoggerFactory.getLogger(Tx_vAccessService.class);
+
+
     @Autowired
     private TxvMapper txvMapper;
 
@@ -31,6 +38,7 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
      */
     @Override
     public Map init() {
+        logger.info("------");
         Map returnMap=new HashMap();
         //查询轮播图
         Map initMap=new HashMap();
@@ -54,7 +62,7 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
      * @return
      */
     public List<PictureBean> getPictureList(Map param) {
-        log.info("[Tx_vAccessService]- search pictureList");
+        logger.info("[Tx_vAccessService]- search pictureList");
         List<PictureBean> carouseList = txvMapper.getCarouseList(param);
         return carouseList;
     }
@@ -88,7 +96,7 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
 
 
     @Override
-    public List getAll(Map param) {
+    public PageBean getAll(Map param) {
         Integer pageNum=0;
         Integer pageSize=3;
         if(param.get("pageNum")!=null){
@@ -97,12 +105,12 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
         if(param.get("pageSize")!=null){
             pageSize = new Integer(param.get("pageSize").toString());
         }
-
+        //开启分页
         PageHelper.startPage(pageNum,pageSize);
         List all = txvMapper.getAll(param);
         PageBean pageBean = new PageBean(pageNum, pageSize,all.size());
         pageBean.setItems(all);
-        return pageBean.getItems();
+        return pageBean;
     }
 
 

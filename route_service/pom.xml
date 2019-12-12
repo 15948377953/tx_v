@@ -20,6 +20,18 @@
     </properties>
 
     <dependencies>
+        <!-- swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <!-- swagger-ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.5.0</version>
+        </dependency>
         <!-- Spring Boot Dubbo 依赖 -->
         <dependency>
             <groupId>com.alibaba.spring.boot</groupId>

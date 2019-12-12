@@ -11,6 +11,19 @@ import java.util.List;
 
 public class GeneratorUtil {
 
+	public static void main(String[] args) throws Exception {
+		try {
+			GeneratorUtil generatorSqlmap = new GeneratorUtil();
+			generatorSqlmap.generator();
+			System.out.println("成功!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+
+
 	public void generator() throws Exception {
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
@@ -26,15 +39,6 @@ public class GeneratorUtil {
 
 	}
 
-	public static void main(String[] args) throws Exception {
-		try {
-			GeneratorUtil generatorSqlmap = new GeneratorUtil();
-			generatorSqlmap.generator();
-			System.out.println("成功!");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 
-	}
 
 }

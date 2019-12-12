@@ -1,4 +1,66 @@
-====================================pagehelper start====================================
+====================================Elasticsearch====================================
+
+
+====================================Swagger-UI====================================
+1.swagger实例对象：SwaggerConfig
+2.@ApiOperation("") 接口标题
+3.@ApiImplicitParam(name = "",value = "",dataType = "")
+  name-参数名字
+  value-参数意义的描述
+  dataType-参数的数据类型。取值:Long/String  required-是否必填 true/false
+  paramType-查询参数类型，实际上就是参数放在那里 取值类型
+    * path：以地址的形式提交数据，根据 id 查询用户的接口就是这种形式传参。
+    * query：Query string 的方式传参。
+    * header：以流的形式提交。
+    * form：以 Form 表单的形式提交。
+
+依赖配置：
+  <!-- swagger -->
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>2.5.0</version>
+    </dependency>
+    <!-- swagger-ui -->
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>2.5.0</version>
+    </dependency>
+
+
+====================================dubbo====================================
+1. *      注解模式：
+   *      1 启动类添加 @EnableDubboConfiguration 注解
+   *      2 服务消费方用@Reference注解 引用接口
+   *      3 服务提供方用@Service(dubbo包下service注解，用于暴露服务于注册中心) 再用service(springframework下的注解)在容器中注册对象
+
+2.* 启动类加上引用dubbo 配置文件（@ImportResource 相当于将文件作为spring中的applicationContext.xml 一部分）//@ImportResource("classpath:dubbo-consumer.xml")
+  * 配置接口 consumer.xml和 provider.xml
+
+
+依赖配置：
+        <!-- Spring Boot Dubbo 依赖 -->
+        <dependency>
+            <groupId>com.alibaba.spring.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+         <groupId>org.apache.zookeeper</groupId>
+         <artifactId>zookeeper</artifactId>
+         <version>3.4.8</version>
+        </dependency>
+        <dependency>
+         <groupId>com.101tec</groupId>
+         <artifactId>zkclient</artifactId>
+         <version>0.10</version>
+        </dependency>
+
+
+
+
+====================================pagehelper====================================
 1.PageHelper.startPage(pageNum,pageSize);
 2.详见 TestBase 测试类
 依赖配置：
@@ -51,5 +113,14 @@
             <version>1.3.2</version>
         </dependency>
 
+====================================redis====================================
+1.redis实例对象类：RedisConfig
+2.RedisTemplate 操作redis数据库
 
+依赖配置：
+        <!-- redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 

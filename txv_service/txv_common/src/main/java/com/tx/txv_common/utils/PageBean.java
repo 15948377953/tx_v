@@ -1,12 +1,13 @@
 package com.tx.txv_common.utils;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 分页实例
  * @param <T>
  */
-public class PageBean<T> {
+public class PageBean<T> implements Serializable {
 
     // 当前页
     private Integer currentPage = 1;

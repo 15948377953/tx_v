@@ -18,3 +18,36 @@
 2019-12-11 16:55:04.080 [RMI TCP Connection(4)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
 2019-12-11 17:37:01.816 [RMI TCP Connection(3)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
 2019-12-11 22:05:03.097 [RMI TCP Connection(3)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
+2019-12-12 14:44:21.826 [RMI TCP Connection(4)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
+2019-12-12 14:44:29.621 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.625 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.627 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.628 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.630 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.631 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.633 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.634 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.649 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.650 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.651 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.653 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.654 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.654 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.655 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:44:29.656 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:51:10.416 [RMI TCP Connection(3)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
+2019-12-12 14:51:20.066 [RMI TCP Connection(3)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:51:20.075 [RMI TCP Connection(3)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:56:01.143 [RMI TCP Connection(4)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
+2019-12-12 14:56:08.380 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:56:08.391 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:58:25.133 [RMI TCP Connection(4)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
+2019-12-12 14:58:32.174 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 14:58:32.185 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 15:10:49.562 [DubboZkclientConnector-SendThread(120.79.42.102:2181)] WARN  org.apache.zookeeper.ClientCnxn - Client session timed out, have not heard from server in 25241ms for sessionid 0x16c4af0d205033a
+2019-12-12 16:00:28.196 [RMI TCP Connection(4)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
+2019-12-12 16:00:35.567 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 16:00:35.583 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 16:05:59.407 [RMI TCP Connection(4)-127.0.0.1] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.tx.route_service]' package. Please check your configuration.
+2019-12-12 16:06:07.130 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
+2019-12-12 16:06:07.146 [RMI TCP Connection(4)-127.0.0.1] WARN  s.d.s.r.operation.OperationImplicitParameterReader - Coercing to be of type string. This may not even be a scalar type in actuality
