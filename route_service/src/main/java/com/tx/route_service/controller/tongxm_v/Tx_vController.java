@@ -30,12 +30,13 @@ import java.util.Map;
 @Api("开森一刻接口功能")
 public class Tx_vController {
 
+    //dubbo注解@Reference
     @Reference(timeout = 60000)
     private Tx_vAccessIntf tx_vAccess;
 
 
     /**
-     * 页面初始花
+     * 页面初始化
      * @return
      */
     @ApiOperation("页面初始化-查询轮播图/查询热门视频/查询热门小说")
@@ -63,7 +64,7 @@ public class Tx_vController {
      */
     @ApiOperation("分页查询")
     @RequestMapping(value = "getPage",method = RequestMethod.POST)
-    @ApiImplicitParam(name = "Map",value = "查询参数对象,pageNum:当前页码,pageSize:每页展示数",dataType = "String")
+    @ApiImplicitParam(name = "param",value = "查询参数对象,pageNum:当前页码,pageSize:每页展示数",dataType = "Map")
     public Object getAll(@RequestParam Map param){
         PageBean all = tx_vAccess.getAll(param);
         return all;

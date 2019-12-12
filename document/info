@@ -61,7 +61,7 @@
 
 
 ====================================pagehelper====================================
-1.PageHelper.startPage(pageNum,pageSize);
+1.PageHelper.startPage(pageNum,pageSize) 开启分页，传入当前页码和展示条数;
 2.详见 TestBase 测试类
 依赖配置：
         <!-- pagehelper -->
