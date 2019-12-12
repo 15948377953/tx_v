@@ -17,8 +17,8 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
-        <!--指定entity生成的位置-->
-        <javaModelGenerator targetPackage="com.tx.txv_common.pojo" targetProject="./src/main/java">
+        <!--指定entity生成的位置 -->
+        <javaModelGenerator targetPackage="com.tx.txv_common.pojo" targetProject="../txv_common/src/main/java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
