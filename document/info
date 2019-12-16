@@ -124,3 +124,21 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
 
+====================================springboot 工程用外部tomcat启动====================================
+1.继承SpringBootServletInitializer 重写configure方法
+2.
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(RouteServiceApplication.class);
+    }
+
+
+依赖配置：
+            <!-- 移除springboot的内嵌tomcat插件 将作用域改为仅测试和编译（不参与运行和打包） -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+                <scope>provided</scope>
+            </dependency>
+
+

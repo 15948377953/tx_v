@@ -1,5 +1,6 @@
 package com.tx.txv_provider;
 
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.tx.txv_common.pojo.PictureBean;
 import com.tx.txv_common.utils.PageBean;
@@ -35,6 +36,20 @@ public class TestBase {
         PageBean pageBean = new PageBean(pageNum, pageSize,all.size());
         log.error(all.size()+"");
     }
+
+
+    @Test
+    public void test2(){
+        String p="{\"name\":\"tong\",\"age\":\"23\"}";
+        JSONObject ob1=new JSONObject();
+        ob1.put("name","tong");
+        ob1.put("age","23");
+        JSONObject ob2=new JSONObject();
+        ob2.put("name","wei");
+        ob2.put("age","24");
+        System.out.println(JSONObject.toJSONString(ob1));
+    }
+
 
 
 

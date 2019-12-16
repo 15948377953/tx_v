@@ -99,6 +99,7 @@ public class Tx_vController {
         try {
             outputStream= response.getOutputStream();
             outputStream.write(pictureByte);
+            outputStream.flush();
         }catch (Exception e){
 
         }finally {

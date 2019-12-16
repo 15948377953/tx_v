@@ -2,9 +2,13 @@ package com.tx.route_service;
 
 import com.alibaba.dubbo.config.spring.context.annotation.EnableDubbo;
 import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
@@ -52,14 +56,31 @@ import org.springframework.web.filter.CorsFilter;
 //@ImportResource("classpath:dubbo-consumer.xml")
 @EnableDubboConfiguration//dubbo 注解方式
 public class RouteServiceApplication extends SpringBootServletInitializer {
+    public static ApplicationContext context;
     private final String EXPOSE_HEADER = "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Token";
 
 
+    /**
+     * 重写configure方法,实现springboot工程以外部tomcat形式启动
+     * @param builder
+     * @return
+     */
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(RouteServiceApplication.class);
+        SpringApplicationBuilder sources = builder.sources(RouteServiceApplication.class);
+        return sources;
     }
 
+
+    /**
+     * 注册servlet 请求映射
+     * @return
+     */
+    @Bean
+    protected ServletRegistrationBean registrationBean(){
+        return new ServletRegistrationBean(new TxvServlet(),"/Txv/*");
+
+    }
 
     /**
      * 创建跨域配置项
