@@ -72,11 +72,11 @@ public class Tx_vController {
      * @param param
      * @return
      */
-    @ApiOperation("分页查询")
-    @RequestMapping(value = "getPage",method = RequestMethod.POST)
-    @ApiImplicitParam(name = "param",value = "查询参数对象,pageNum:当前页码,pageSize:每页展示数",dataType = "Map")
-    public Object getAll(@RequestParam Map param) throws Exception {
-        PageBean all = tx_vAccess.getPageBean(param);
+    @ApiOperation("条件查询-支持分页")
+    @RequestMapping(value = "queryDataByParam",method = RequestMethod.POST)
+    @ApiImplicitParam(name = "param",value = "查询参数对象,currentPage:当前页码,pageSize:每页展示数",dataType = "Map")
+    public Object queryDataByParam(@RequestParam Map param) throws Exception {
+        PageBean all = tx_vAccess.queryDataByParam(param);
         return all;
     }
 
@@ -98,7 +98,9 @@ public class Tx_vController {
         ServletOutputStream outputStream=null;
         try {
             outputStream= response.getOutputStream();
-            outputStream.write(pictureByte);
+            if(pictureByte!=null&&pictureByte.length>0){
+                outputStream.write(pictureByte);
+            }
             outputStream.flush();
         }catch (Exception e){
 
@@ -109,7 +111,7 @@ public class Tx_vController {
                 e.printStackTrace();
             }
         }
-        return null;
+        return "success";
     }
 
 

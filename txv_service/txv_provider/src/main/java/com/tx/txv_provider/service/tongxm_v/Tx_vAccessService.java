@@ -51,9 +51,9 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
         //猜你喜欢
         initMap.remove("picType");
         //设置分页参数
-        initMap.put("pageNum","1");
+        initMap.put("currentPage","1");
         initMap.put("pageSize","5");
-        PageBean pageBean = this.getPageBean(initMap);
+        PageBean pageBean = this.queryDataByParam(initMap);
         returnMap.put("carouseList",carouseList);
         returnMap.put("hotVideoList",hotVideoList);
         returnMap.put("hotTextList",hotTextList);
@@ -101,9 +101,9 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
 
 
     @Override
-    public PageBean getPageBean(Map param) throws Exception {
-        Integer currentPage=0;
-        Integer pageSize=3;
+    public PageBean queryDataByParam(Map param) throws Exception {
+        Integer currentPage=null;
+        Integer pageSize=null;
         if(param.get("currentPage")!=null){
             currentPage = new Integer(param.get("currentPage").toString());
         }

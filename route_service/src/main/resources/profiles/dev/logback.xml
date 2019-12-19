@@ -15,7 +15,7 @@
             <level>debug</level>
         </filter>
         <encoder>
-            <Pattern>${CONSOLE_LOG_PATTERN}</Pattern>
+            <Pattern>${log.path}</Pattern>
             <!-- 设置字符集 -->
             <charset>UTF-8</charset>
         </encoder>

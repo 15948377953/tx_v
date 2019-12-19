@@ -46,6 +46,6 @@
         </javaClientGenerator>
 
         <!--table是指定每个表的生成策略-->
-        <table tableName="tx_pic" ></table>
+        <table tableName="tx_common_param" ></table>
     </context>
 </generatorConfiguration>

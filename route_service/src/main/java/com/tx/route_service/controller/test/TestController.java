@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 @Slf4j
@@ -52,10 +55,6 @@ public class TestController extends BaseController {
 //        Object redisTest = testInTF.redisTest("redisTest");
 //        return redisTest.toString();
 //    }
-
-
-
-
 
 
 

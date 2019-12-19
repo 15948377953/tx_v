@@ -14,7 +14,7 @@ public interface Tx_vAccessIntf {
     public byte[] getPictureByteById(Map param);
     public VideoBean getVideoById(Map param);
     public byte[] getVideoByteById(Map param);
-    public PageBean getPageBean(Map param) throws Exception;
+    public PageBean queryDataByParam(Map param) throws Exception;
     public List<PictureBean> guessUlike(Map param) throws Exception;
 
 }
