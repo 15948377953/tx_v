@@ -1,7 +1,10 @@
 package com.tx.route_service.base;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.alibaba.fastjson.JSONObject;
 
 public class BaseController {
+
 }
+
+
+

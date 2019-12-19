@@ -1,9 +1,11 @@
 package com.tx.txv_provider;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.tx.txv_common.pojo.PictureBean;
 import com.tx.txv_common.utils.PageBean;
+import com.tx.txv_intf.tongxm_v.Tx_vAccessIntf;
 import com.tx.txv_provider.mapper.TxvMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -25,6 +27,8 @@ public class TestBase {
     @Autowired
     private TxvMapper txvMapper;
 
+    @Autowired()
+    private Tx_vAccessIntf tx_vAccess;
 
     @Test
     public void test1(){
@@ -39,15 +43,12 @@ public class TestBase {
 
 
     @Test
-    public void test2(){
-        String p="{\"name\":\"tong\",\"age\":\"23\"}";
-        JSONObject ob1=new JSONObject();
-        ob1.put("name","tong");
-        ob1.put("age","23");
-        JSONObject ob2=new JSONObject();
-        ob2.put("name","wei");
-        ob2.put("age","24");
-        System.out.println(JSONObject.toJSONString(ob1));
+    public void test2() throws Exception {
+        Map param=new HashMap();
+        param.put("keyWord","菜");
+        param.put("currentPage","1");
+        param.put("pageSize","2");
+        PageBean all = tx_vAccess.queryDataByParam(param);
     }
 
 

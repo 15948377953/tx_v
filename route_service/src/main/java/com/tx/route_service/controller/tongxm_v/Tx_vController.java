@@ -1,19 +1,16 @@
 package com.tx.route_service.controller.tongxm_v;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.tx.txv_common.pojo.PictureBean;
 import com.tx.txv_common.utils.PageBean;
+import com.tx.txv_common.utils.TxResponse;
 import com.tx.txv_intf.tongxm_v.Tx_vAccessIntf;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
@@ -73,10 +70,11 @@ public class Tx_vController {
      * @return
      */
     @ApiOperation("条件查询-支持分页")
-    @RequestMapping(value = "queryDataByParam",method = RequestMethod.POST)
+    @RequestMapping(value = "queryByParam",method = RequestMethod.POST)
     @ApiImplicitParam(name = "param",value = "查询参数对象,currentPage:当前页码,pageSize:每页展示数",dataType = "Map")
     public Object queryDataByParam(@RequestParam Map param) throws Exception {
         PageBean all = tx_vAccess.queryDataByParam(param);
+        TxResponse.success(all);
         return all;
     }
 

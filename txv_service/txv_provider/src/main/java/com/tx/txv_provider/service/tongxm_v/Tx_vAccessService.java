@@ -3,17 +3,19 @@ package com.tx.txv_provider.service.tongxm_v;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
 import com.tx.txv_common.pojo.PictureBean;
+import com.tx.txv_common.pojo.TxPoster;
+import com.tx.txv_common.pojo.TxPosterExample;
 import com.tx.txv_common.pojo.VideoBean;
+import com.tx.txv_common.utils.GenerateSearchExample;
 import com.tx.txv_common.utils.PageBean;
 import com.tx.txv_intf.tongxm_v.Tx_vAccessIntf;
+import com.tx.txv_provider.mapper.TxPosterMapper;
 import com.tx.txv_provider.mapper.TxvMapper;
 import com.tx.txv_common.utils.Base64Util;
-import com.tx.txv_provider.utils.ApplicationContextUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContextAware;
+import org.springframework.util.StringUtils;
 
 import java.util.*;
 
@@ -28,6 +30,9 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
 
     @Autowired
     private TxvMapper txvMapper;
+
+    @Autowired
+    private TxPosterMapper txPosterMapper;
 
     /**
      * 首页初始化所需图片数据
@@ -102,6 +107,7 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
 
     @Override
     public PageBean queryDataByParam(Map param) throws Exception {
+        String keyWord= StringUtils.isEmpty(param.get("keyWord"))?"":param.get("keyWord").toString();
         Integer currentPage=null;
         Integer pageSize=null;
         if(param.get("currentPage")!=null){
@@ -110,14 +116,22 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
         if(param.get("pageSize")!=null){
             pageSize = new Integer(param.get("pageSize").toString());
         }
+        //根据关键字生成TxPosterExample类
+        TxPosterExample example = GenerateSearchExample.generateTxPosterExample(keyWord);
         if(currentPage==null||pageSize==null){
-            throw new Exception("缺少分页查询参数");
+            //非分页查询
+            PageBean pageBean = new PageBean();
+            List<TxPoster> txPosters = txPosterMapper.selectByExample(example);
+            pageBean.setItems(txPosters);
+            return pageBean;
         }
-        //开启分页
+        //分页查询，开启分页
         PageHelper.startPage(currentPage,pageSize);
-        List all = txvMapper.getAll(param);
-        PageBean pageBean = new PageBean(currentPage, pageSize,all.size());
-        pageBean.setItems(all);
+        List<TxPoster> txPosters = txPosterMapper.selectByExample(example);
+        int totalNum = txPosterMapper.countByExample(example);
+        //封装分页对象并返回
+        PageBean pageBean = new PageBean(currentPage,pageSize,totalNum);
+        pageBean.setItems(txPosters);
         return pageBean;
     }
 
