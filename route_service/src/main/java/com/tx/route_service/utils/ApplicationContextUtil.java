@@ -1,4 +1,4 @@
-package com.tx.txv_provider.utils;
+package com.tx.route_service.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

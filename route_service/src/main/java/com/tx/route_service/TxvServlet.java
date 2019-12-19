@@ -1,12 +1,9 @@
 package com.tx.route_service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.tx.txv_common.bean.BeanManager;
+import com.tx.route_service.utils.ApplicationContextUtil;
 import com.tx.txv_common.config.SpringDataConfig;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.ServletException;
@@ -64,7 +61,7 @@ public class TxvServlet extends HttpServlet{
             Class<?> aClass = Class.forName(className);
             //从容器中获取实例
             Method declaredMethod = aClass.getDeclaredMethod(method, JSONObject.class);
-            Object bean = BeanManager.getBean(aClass);
+            Object bean = ApplicationContextUtil.getApplicationContext().getBean(aClass);
             Object[] invokeParam=new Object[]{param};
             declaredMethod.invoke(bean,invokeParam);
         } catch (ClassNotFoundException | NoSuchMethodException e) {
@@ -72,8 +69,6 @@ public class TxvServlet extends HttpServlet{
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
             e.printStackTrace();
         }
 
