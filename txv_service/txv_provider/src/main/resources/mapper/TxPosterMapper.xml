@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tx.txv_provider.mapper.TxPosterMapper" >
+  <resultMap id="BaseResultMap" type="com.tx.txv_common.pojo.TxPoster" >
+    <id column="POST_ID" property="postId" jdbcType="VARCHAR" />
+    <result column="POST_NAME" property="postName" jdbcType="VARCHAR" />
+    <result column="POST_LOCATION" property="postLocation" jdbcType="VARCHAR" />
+    <result column="POST_LABLE" property="postLable" jdbcType="VARCHAR" />
+    <result column="POST_DESC" property="postDesc" jdbcType="VARCHAR" />
+    <result column="POST_TYPE" property="postType" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="UPLOAD_TIME" property="uploadTime" jdbcType="DATE" />
+    <result column="UPLOAD_STAFF" property="uploadStaff" jdbcType="VARCHAR" />
+    <result column="ORDER_NO" property="orderNo" jdbcType="VARCHAR" />
+    <result column="SCORE" property="score" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.tx.txv_common.pojo.TxPoster" extends="BaseResultMap" >
+    <result column="POST_DATA" property="postData" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    POST_ID, POST_NAME, POST_LOCATION, POST_LABLE, POST_DESC, POST_TYPE, STATE, UPLOAD_TIME, 
+    UPLOAD_STAFF, ORDER_NO, SCORE
+  </sql>
+  <sql id="Blob_Column_List" >
+    POST_DATA
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.tx.txv_common.pojo.TxPosterExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tx_poster
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tx.txv_common.pojo.TxPosterExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tx_poster
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tx_poster
+    where POST_ID = #{postId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tx_poster
+    where POST_ID = #{postId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tx.txv_common.pojo.TxPosterExample" >
+    delete from tx_poster
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tx.txv_common.pojo.TxPoster" >
+    insert into tx_poster (POST_ID, POST_NAME, POST_LOCATION, 
+      POST_LABLE, POST_DESC, POST_TYPE, 
+      STATE, UPLOAD_TIME, UPLOAD_STAFF, 
+      ORDER_NO, SCORE, POST_DATA
+      )
+    values (#{postId,jdbcType=VARCHAR}, #{postName,jdbcType=VARCHAR}, #{postLocation,jdbcType=VARCHAR}, 
+      #{postLable,jdbcType=VARCHAR}, #{postDesc,jdbcType=VARCHAR}, #{postType,jdbcType=VARCHAR}, 
+      #{state,jdbcType=CHAR}, #{uploadTime,jdbcType=DATE}, #{uploadStaff,jdbcType=VARCHAR}, 
+      #{orderNo,jdbcType=VARCHAR}, #{score,jdbcType=VARCHAR}, #{postData,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tx.txv_common.pojo.TxPoster" >
+    insert into tx_poster
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="postId != null" >
+        POST_ID,
+      </if>
+      <if test="postName != null" >
+        POST_NAME,
+      </if>
+      <if test="postLocation != null" >
+        POST_LOCATION,
+      </if>
+      <if test="postLable != null" >
+        POST_LABLE,
+      </if>
+      <if test="postDesc != null" >
+        POST_DESC,
+      </if>
+      <if test="postType != null" >
+        POST_TYPE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="uploadTime != null" >
+        UPLOAD_TIME,
+      </if>
+      <if test="uploadStaff != null" >
+        UPLOAD_STAFF,
+      </if>
+      <if test="orderNo != null" >
+        ORDER_NO,
+      </if>
+      <if test="score != null" >
+        SCORE,
+      </if>
+      <if test="postData != null" >
+        POST_DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="postId != null" >
+        #{postId,jdbcType=VARCHAR},
+      </if>
+      <if test="postName != null" >
+        #{postName,jdbcType=VARCHAR},
+      </if>
+      <if test="postLocation != null" >
+        #{postLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="postLable != null" >
+        #{postLable,jdbcType=VARCHAR},
+      </if>
+      <if test="postDesc != null" >
+        #{postDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="postType != null" >
+        #{postType,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="uploadTime != null" >
+        #{uploadTime,jdbcType=DATE},
+      </if>
+      <if test="uploadStaff != null" >
+        #{uploadStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="postData != null" >
+        #{postData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tx.txv_common.pojo.TxPosterExample" resultType="java.lang.Integer" >
+    select count(*) from tx_poster
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tx_poster
+    <set >
+      <if test="record.postId != null" >
+        POST_ID = #{record.postId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postName != null" >
+        POST_NAME = #{record.postName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postLocation != null" >
+        POST_LOCATION = #{record.postLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postLable != null" >
+        POST_LABLE = #{record.postLable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postDesc != null" >
+        POST_DESC = #{record.postDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postType != null" >
+        POST_TYPE = #{record.postType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.state != null" >
+        STATE = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.uploadTime != null" >
+        UPLOAD_TIME = #{record.uploadTime,jdbcType=DATE},
+      </if>
+      <if test="record.uploadStaff != null" >
+        UPLOAD_STAFF = #{record.uploadStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderNo != null" >
+        ORDER_NO = #{record.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.score != null" >
+        SCORE = #{record.score,jdbcType=VARCHAR},
+      </if>
+      <if test="record.postData != null" >
+        POST_DATA = #{record.postData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tx_poster
+    set POST_ID = #{record.postId,jdbcType=VARCHAR},
+      POST_NAME = #{record.postName,jdbcType=VARCHAR},
+      POST_LOCATION = #{record.postLocation,jdbcType=VARCHAR},
+      POST_LABLE = #{record.postLable,jdbcType=VARCHAR},
+      POST_DESC = #{record.postDesc,jdbcType=VARCHAR},
+      POST_TYPE = #{record.postType,jdbcType=VARCHAR},
+      STATE = #{record.state,jdbcType=CHAR},
+      UPLOAD_TIME = #{record.uploadTime,jdbcType=DATE},
+      UPLOAD_STAFF = #{record.uploadStaff,jdbcType=VARCHAR},
+      ORDER_NO = #{record.orderNo,jdbcType=VARCHAR},
+      SCORE = #{record.score,jdbcType=VARCHAR},
+      POST_DATA = #{record.postData,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tx_poster
+    set POST_ID = #{record.postId,jdbcType=VARCHAR},
+      POST_NAME = #{record.postName,jdbcType=VARCHAR},
+      POST_LOCATION = #{record.postLocation,jdbcType=VARCHAR},
+      POST_LABLE = #{record.postLable,jdbcType=VARCHAR},
+      POST_DESC = #{record.postDesc,jdbcType=VARCHAR},
+      POST_TYPE = #{record.postType,jdbcType=VARCHAR},
+      STATE = #{record.state,jdbcType=CHAR},
+      UPLOAD_TIME = #{record.uploadTime,jdbcType=DATE},
+      UPLOAD_STAFF = #{record.uploadStaff,jdbcType=VARCHAR},
+      ORDER_NO = #{record.orderNo,jdbcType=VARCHAR},
+      SCORE = #{record.score,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tx.txv_common.pojo.TxPoster" >
+    update tx_poster
+    <set >
+      <if test="postName != null" >
+        POST_NAME = #{postName,jdbcType=VARCHAR},
+      </if>
+      <if test="postLocation != null" >
+        POST_LOCATION = #{postLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="postLable != null" >
+        POST_LABLE = #{postLable,jdbcType=VARCHAR},
+      </if>
+      <if test="postDesc != null" >
+        POST_DESC = #{postDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="postType != null" >
+        POST_TYPE = #{postType,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="uploadTime != null" >
+        UPLOAD_TIME = #{uploadTime,jdbcType=DATE},
+      </if>
+      <if test="uploadStaff != null" >
+        UPLOAD_STAFF = #{uploadStaff,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null" >
+        SCORE = #{score,jdbcType=VARCHAR},
+      </if>
+      <if test="postData != null" >
+        POST_DATA = #{postData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where POST_ID = #{postId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tx.txv_common.pojo.TxPoster" >
+    update tx_poster
+    set POST_NAME = #{postName,jdbcType=VARCHAR},
+      POST_LOCATION = #{postLocation,jdbcType=VARCHAR},
+      POST_LABLE = #{postLable,jdbcType=VARCHAR},
+      POST_DESC = #{postDesc,jdbcType=VARCHAR},
+      POST_TYPE = #{postType,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=CHAR},
+      UPLOAD_TIME = #{uploadTime,jdbcType=DATE},
+      UPLOAD_STAFF = #{uploadStaff,jdbcType=VARCHAR},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=VARCHAR},
+      POST_DATA = #{postData,jdbcType=LONGVARCHAR}
+    where POST_ID = #{postId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tx.txv_common.pojo.TxPoster" >
+    update tx_poster
+    set POST_NAME = #{postName,jdbcType=VARCHAR},
+      POST_LOCATION = #{postLocation,jdbcType=VARCHAR},
+      POST_LABLE = #{postLable,jdbcType=VARCHAR},
+      POST_DESC = #{postDesc,jdbcType=VARCHAR},
+      POST_TYPE = #{postType,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=CHAR},
+      UPLOAD_TIME = #{uploadTime,jdbcType=DATE},
+      UPLOAD_STAFF = #{uploadStaff,jdbcType=VARCHAR},
+      ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      SCORE = #{score,jdbcType=VARCHAR}
+    where POST_ID = #{postId,jdbcType=VARCHAR}
+  </update>
+</mapper>

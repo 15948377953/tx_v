@@ -1,6 +1,7 @@
 package com.tx.route_service.config;
 
 import com.tx.txv_common.annotation.Txv;
+import com.tx.txv_common.bean.BeanManager;
 import com.tx.txv_common.config.SpringDataConfig;
 import org.springframework.aop.framework.AopProxyUtils;
 import org.springframework.beans.BeansException;
@@ -53,7 +54,7 @@ public class TxvAutoConfiguration implements BeanPostProcessor, SmartInitializin
 
         }
 
-
+        BeanManager.getBeanMap().put(aClass.getName(),bean);
         return bean;
     }
 

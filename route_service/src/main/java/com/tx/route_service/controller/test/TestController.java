@@ -38,7 +38,8 @@ public class TestController extends BaseController {
         String name = param.getString("name");
         String age = param.getString("age");
         System.out.println(name+"-----"+age);
-        return name+"-----"+age;
+        String result = dubboAnnotationTest.dubboAnnotationTest();
+        return result;
     }
 
 

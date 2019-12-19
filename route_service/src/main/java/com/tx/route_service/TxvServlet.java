@@ -1,6 +1,7 @@
 package com.tx.route_service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.tx.txv_common.bean.BeanManager;
 import com.tx.txv_common.config.SpringDataConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
@@ -63,9 +64,9 @@ public class TxvServlet extends HttpServlet{
             Class<?> aClass = Class.forName(className);
             //从容器中获取实例
             Method declaredMethod = aClass.getDeclaredMethod(method, JSONObject.class);
-            Object o = aClass.newInstance();
+            Object bean = BeanManager.getBean(aClass);
             Object[] invokeParam=new Object[]{param};
-            declaredMethod.invoke(o,invokeParam);
+            declaredMethod.invoke(bean,invokeParam);
         } catch (ClassNotFoundException | NoSuchMethodException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
