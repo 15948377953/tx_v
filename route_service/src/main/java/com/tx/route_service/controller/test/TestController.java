@@ -33,10 +33,10 @@ public class TestController extends BaseController {
     private DubboAnnotation dubboAnnotationTest;
 
 
-    @Txv(name = "/testTxv")
-    public String dubboAnnotationTest(JSONObject param){
-        String name = param.getString("name");
-        String age = param.getString("age");
+    @Txv()
+    public String testTxv(JSONObject paramJSON){
+        String name = paramJSON.getString("name");
+        String age = paramJSON.getString("age");
         System.out.println(name+"-----"+age);
         String result = dubboAnnotationTest.dubboAnnotationTest();
         return result;

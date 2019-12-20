@@ -2,6 +2,8 @@ package com.tx.txv_provider.service.tongxm_v;
 
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.PageHelper;
+import com.tx.txv_common.impl.TDataMap;
+import com.tx.txv_common.intf.TData;
 import com.tx.txv_common.pojo.PictureBean;
 import com.tx.txv_common.pojo.TxPoster;
 import com.tx.txv_common.pojo.TxPosterExample;
@@ -44,15 +46,15 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
         logger.info("------");
         Map returnMap=new HashMap();
         //查询轮播图
-        Map initMap=new HashMap();
+        TData initMap=new TDataMap();
         initMap.put("picType","1");
-        List<PictureBean> carouseList = this.getPictureList(initMap);
+        List<TxPoster> carouseList = this.getPostList(initMap);
         //查询热门视频
         initMap.put("picType","2");
-        List<PictureBean> hotVideoList = this.getPictureList(initMap);
+        List<TxPoster> hotVideoList = this.getPostList(initMap);
         //查询热门小说
         initMap.put("picType","3");
-        List<PictureBean> hotTextList = this.getPictureList(initMap);
+        List<TxPoster> hotTextList = this.getPostList(initMap);
         //猜你喜欢
         initMap.remove("picType");
         //设置分页参数
@@ -71,23 +73,27 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
      * @param param
      * @return
      */
-    public List<PictureBean> getPictureList(Map param) {
-        logger.info("[Tx_vAccessService]- search pictureList");
-        List<PictureBean> carouseList = txvMapper.getCarouseList(param);
-        return carouseList;
+    public List<TxPoster> getPostList(TData param) {
+        logger.info("[Tx_vAccessService]- search PostListList");
+        String picType = param.getString("picType");
+        TxPosterExample example=new TxPosterExample();
+        example.createCriteria().andPostTypeEqualTo(picType);
+        List<TxPoster> searchList = txPosterMapper.selectByExample(example);
+        return searchList;
     }
 
 
     @Override
-    public PictureBean getPictureById(Map param) {
-        return txvMapper.getPictureById(param);
+    public TxPoster getPostById(Map param) {
+        TxPosterExample example=new TxPosterExample();
+        String picId=param.get("picId").toString();
+        return  txPosterMapper.selectByPrimaryKey(picId);
     }
 
     @Override
-    public byte[] getPictureByteById(Map param) {
-        PictureBean picBean = getPictureById(param);
-        byte[] bytes = Base64Util.stringBase64ToByte(picBean.getPicData());
-
+    public byte[] getPostByteById(Map param) {
+        TxPoster postBean = getPostById(param);
+        byte[] bytes = Base64Util.stringBase64ToByte(postBean.getPostData());
         return bytes;
     }
 
@@ -141,8 +147,9 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
      * @return
      */
     @Override
-    public List<PictureBean> guessUlike(Map param) throws Exception {
-        List allList = txvMapper.getAll(param);
+    public List<TxPoster> guessUlike(Map param) throws Exception {
+        TxPosterExample example=new TxPosterExample();
+        List<TxPoster> allList = txPosterMapper.selectByExample(example);
         List result=new ArrayList();
         int size = allList.size()-1;
         Set indexSet=new HashSet();

@@ -39,19 +39,13 @@ public class TxvAutoConfiguration implements BeanPostProcessor, SmartInitializin
         Class<?> aClass = AopProxyUtils.ultimateTargetClass(bean);
         //获取被代理对象的所有方法
         Method[] declaredMethods = aClass.getDeclaredMethods();
-        for(Method method:declaredMethods){
-            Txv annotation = method.getAnnotation(Txv.class);
-            if(annotation!=null){
-                Map<String,String> annotationMap=new HashMap<>();
-                String uri=StringUtils.isEmpty(annotation.name())? method.getName():annotation.name().substring((annotation.name().indexOf("/")+1));
-                annotationMap.put("name",uri);
-                annotationMap.put("value", StringUtils.isEmpty(annotation.value())?"":annotation.value());
-                //注解对应的方法名
-                annotationMap.put("method", method.getName());
-                SpringDataConfig.getDataMap().put(aClass.getName()+"#"+method.getName(),annotationMap);
+        if(declaredMethods.length>0){
+            for(Method method:declaredMethods){
+                //@Txv 注解判断
+                setTxvAnnotation(method,aClass);
             }
-
         }
+
 
 
         return bean;
@@ -77,5 +71,19 @@ public class TxvAutoConfiguration implements BeanPostProcessor, SmartInitializin
     @Override
     public void afterSingletonsInstantiated() {
 
+    }
+
+
+    public void setTxvAnnotation(Method method,Class<?> aClass){
+        Txv annotation = method.getAnnotation(Txv.class);
+        if(annotation!=null){
+            Map<String,String> annotationMap=new HashMap<>();
+            String uri=StringUtils.isEmpty(annotation.name())? method.getName():annotation.name().substring((annotation.name().indexOf("/")+1));
+            annotationMap.put("name",uri);
+            annotationMap.put("value", StringUtils.isEmpty(annotation.value())?"":annotation.value());
+            //注解对应的方法名
+            annotationMap.put("method", method.getName());
+            SpringDataConfig.getDataMap().put(aClass.getName()+"#"+method.getName(),annotationMap);
+        }
     }
 }

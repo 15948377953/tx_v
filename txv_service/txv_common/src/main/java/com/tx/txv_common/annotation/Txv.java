@@ -6,6 +6,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Txv {
-    String name() default "emptyName";
-    String value() default "emptyValue";
+    String name() default "";
+    String value() default "";
 }

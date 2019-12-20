@@ -3,12 +3,12 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <context id="DB2Tables" targetRuntime="MyBatis3">
-        <property name="projectPath" value="F:/MyCode/tx_v/txv_service"/>
+<!--        <property name="projectPath" value="F:/MyCode/tx_v/txv_service"/>-->
         <!-- 防止部分IDE，在进行代码生成器过程中，自定义注释部分 中文乱码 -->
         <property name="javaFileEncoding" value="UTF-8"/>
 
         <!-- 为生成的Java模型创建一个toString方法 -->
-        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+<!--        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>-->
         <!--为生成的Java模型实现序列化接口 -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
 
@@ -46,6 +46,6 @@
         </javaClientGenerator>
 
         <!--table是指定每个表的生成策略-->
-        <table tableName="tx_poster" ></table>
+        <table tableName="tx_keyValue" ></table>
     </context>
 </generatorConfiguration>
