@@ -4,20 +4,10 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSONObject;
 import com.tx.route_service.base.BaseController;
 import com.tx.txv_common.annotation.Txv;
-import com.tx.txv_common.utils.DataMap;
 import com.tx.txv_intf.test.DubboAnnotation;
-import com.tx.txv_intf.test.testInTF;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 @Slf4j
