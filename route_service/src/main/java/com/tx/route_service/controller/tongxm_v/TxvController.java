@@ -3,6 +3,7 @@ package com.tx.route_service.controller.tongxm_v;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.fastjson.JSONObject;
 import com.tx.txv_common.Constant;
+import com.tx.txv_common.annotation.KeyValue;
 import com.tx.txv_common.annotation.Txv;
 import com.tx.txv_common.impl.TDataMap;
 import com.tx.txv_common.intf.TData;
@@ -33,6 +34,7 @@ public class TxvController {
     //dubbo注解@Reference
     @Reference(timeout = 60000)
     private Tx_vAccessIntf tx_vAccess;
+
 
 
     /**
@@ -78,8 +80,7 @@ public class TxvController {
     @ApiImplicitParam(name = "param",value = "查询参数对象,currentPage:当前页码,pageSize:每页展示数",dataType = "Map")
     public Object queryDataByParam(JSONObject param) throws Exception {
         PageBean all = tx_vAccess.queryDataByParam(param);
-        TxResponse.success(all);
-        return all;
+        return TxResponse.success(all);
     }
 
 

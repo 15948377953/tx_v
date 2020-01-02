@@ -1,4 +1,4 @@
-package com.tx.route_service;
+package com.tx.route_service.config;
 
 import com.alibaba.fastjson.JSONObject;
 import com.tx.route_service.utils.ApplicationContextUtil;

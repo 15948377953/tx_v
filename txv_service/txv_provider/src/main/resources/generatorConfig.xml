@@ -46,6 +46,6 @@
         </javaClientGenerator>
 
         <!--table是指定每个表的生成策略-->
-        <table tableName="tx_keyValue" ></table>
+        <table tableName="tx_post_video" ></table>
     </context>
 </generatorConfiguration>

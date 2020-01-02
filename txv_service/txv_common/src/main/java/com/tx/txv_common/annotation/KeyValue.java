@@ -7,7 +7,6 @@ import java.lang.reflect.Field;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface KeyValue {
-    String key() default "" ;
-
+    String key() default "" ;//根据tx_keyValue表的key值获取value值
 
 }

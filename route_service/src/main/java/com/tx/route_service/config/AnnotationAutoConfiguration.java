@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Field;
@@ -36,8 +37,7 @@ import java.util.Map;
  */
 @Component
 public class AnnotationAutoConfiguration implements BeanPostProcessor, SmartInitializingSingleton {
-    @Reference(timeout = 60000)
-    TableServiceIntf tableServiceIntf;
+
     /**
      * 在对象创建实例并且完成依赖注入之后，init初始化之前自动调用该方法
      * @param bean
@@ -47,11 +47,6 @@ public class AnnotationAutoConfiguration implements BeanPostProcessor, SmartInit
      */
     @Override
     public Object postProcessBeforeInitialization(Object bean, String BeanName) throws BeansException {
-        Class<?> aClass = AopProxyUtils.ultimateTargetClass(bean);
-        //@Txv 注解判断
-        setTxvAnnotation(aClass);
-        //@KeyValue 注解判断
-        setKeyValue(aClass,bean);
         return bean;
     }
 
@@ -64,6 +59,11 @@ public class AnnotationAutoConfiguration implements BeanPostProcessor, SmartInit
      */
     @Override
     public Object postProcessAfterInitialization(Object bean, String BeanName) throws BeansException {
+        Class<?> aClass = AopProxyUtils.ultimateTargetClass(bean);
+        //@Txv 注解判断
+        setTxvAnnotation(aClass);
+        //@KeyValue 注解判断
+//        setKeyValue(aClass,bean);
         return bean;
     }
 
@@ -79,6 +79,7 @@ public class AnnotationAutoConfiguration implements BeanPostProcessor, SmartInit
 
 
     public void setKeyValue(Class<?> aClass,Object bean) {
+        //Constant在common模块！！！！！
         Field[] declaredFields = aClass.getDeclaredFields();
         for(Field field:declaredFields){
             KeyValue annotation = field.getAnnotation(KeyValue.class);
@@ -88,14 +89,19 @@ public class AnnotationAutoConfiguration implements BeanPostProcessor, SmartInit
                     keyName=annotation.key();
                 }
                 //查询tx_keyVlue表
-                TxKeyvalue keyValue = tableServiceIntf.getKeyValue(keyName);
+//                TxKeyvalue keyValue = tableServiceIntf.getKeyValue(keyName);
                 String value="";
-                if(keyValue!=null){
-                    value=keyValue.getValue();
-                }
+//                if(keyValue!=null){
+//                    value=keyValue.getValue();
+//                }
                 boolean isStatic = Modifier.isStatic(field.getModifiers());
                 if(isStatic){
                     //TODO
+                    try {
+                        field.set(bean,value);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
                     return;
                 }
                 //反射赋值

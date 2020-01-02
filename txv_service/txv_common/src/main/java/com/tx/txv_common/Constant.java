@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Constant {
-    @KeyValue()
+
     public  static String  RESPONSE_END="RESPONSE_END";
 }
