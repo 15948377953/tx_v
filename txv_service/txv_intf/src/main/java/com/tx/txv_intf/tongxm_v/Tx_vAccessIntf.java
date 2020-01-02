@@ -1,8 +1,11 @@
 package com.tx.txv_intf.tongxm_v;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.tx.txv_common.intf.TData;
 import com.tx.txv_common.pojo.PictureBean;
 import com.tx.txv_common.pojo.TxPoster;
+import com.tx.txv_common.pojo.TxVideo;
 import com.tx.txv_common.pojo.VideoBean;
 import com.tx.txv_common.utils.PageBean;
 
@@ -18,5 +21,6 @@ public interface Tx_vAccessIntf {
     public byte[] getVideoByteById(Map param);
     public PageBean queryDataByParam(Map param) throws Exception;
     public List<TxPoster> guessUlike(Map param) throws Exception;
+    public TxVideo getVideoByPostId(JSONObject param);
 
 }

@@ -1,17 +1,16 @@
 package com.tx.txv_provider.service.tongxm_v;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.tx.txv_common.impl.TDataMap;
 import com.tx.txv_common.intf.TData;
-import com.tx.txv_common.pojo.PictureBean;
-import com.tx.txv_common.pojo.TxPoster;
-import com.tx.txv_common.pojo.TxPosterExample;
-import com.tx.txv_common.pojo.VideoBean;
+import com.tx.txv_common.pojo.*;
 import com.tx.txv_common.utils.GenerateSearchExample;
 import com.tx.txv_common.utils.PageBean;
 import com.tx.txv_intf.tongxm_v.Tx_vAccessIntf;
 import com.tx.txv_provider.mapper.TxPosterMapper;
+import com.tx.txv_provider.mapper.TxVideoMapper;
 import com.tx.txv_provider.mapper.TxvMapper;
 import com.tx.txv_common.utils.Base64Util;
 import org.slf4j.Logger;
@@ -36,6 +35,8 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
     @Autowired
     private TxPosterMapper txPosterMapper;
 
+    @Autowired
+    private TxVideoMapper txVideoMapper;
     /**
      * 首页初始化所需图片数据
      * @param param
@@ -166,6 +167,20 @@ public class Tx_vAccessService implements Tx_vAccessIntf {
         return result;
     }
 
+    /**
+     * 查询视频信息
+     * @param param
+     * @return
+     */
+    @Override
+    public TxVideo getVideoByPostId(JSONObject param) {
+        String postId = param.getString("postId");
+        if(StringUtils.isEmpty(postId)){
+            return null;
+        }
+        TxVideo videoByPostId = txVideoMapper.getVideoByPostId(postId);
+        return videoByPostId;
+    }
 
 
 }

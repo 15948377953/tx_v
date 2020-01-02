@@ -7,6 +7,7 @@ import com.tx.txv_common.annotation.KeyValue;
 import com.tx.txv_common.annotation.Txv;
 import com.tx.txv_common.impl.TDataMap;
 import com.tx.txv_common.intf.TData;
+import com.tx.txv_common.pojo.TxVideo;
 import com.tx.txv_common.utils.PageBean;
 import com.tx.txv_common.utils.TxResponse;
 import com.tx.txv_intf.tongxm_v.Tx_vAccessIntf;
@@ -120,5 +121,17 @@ public class TxvController {
     }
 
 
+    /**
+     *
+     * @param param
+     * @return
+     */
+    @ApiOperation("条件查询-支持分页")
+//    @RequestMapping(value = "queryDataByParam",method = RequestMethod.POST)
+    @Txv()
+    public Object getVideoByPostId(JSONObject param) throws Exception {
+        TxVideo videoByPostId = tx_vAccess.getVideoByPostId(param);
+        return TxResponse.success(videoByPostId);
+    }
 
 }

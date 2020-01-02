@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tx.txv_provider.mapper.TxVideoMapper" >
+
+    <resultMap id="videoBean" type="com.tx.txv_common.pojo.TxVideo">
+        <id column="VIDEO_ID" property="videoId"></id>
+        <result column="VIDEO_LOCATION" property="videoLocation"></result>
+        <result column="VIDEO_DESC" property="videoDesc"></result>
+        <result column="UPLOAD_TIME" property="uploadTime"></result>
+    </resultMap>
+
+    <select id="getVideoByPostId"  resultMap="videoBean">
+     select v.VIDEO_ID,v.VIDEO_LOCATION,v.VIDEO_DESC,v.UPLOAD_TIME
+     from tx_video v,tx_post_video tpv
+     where v.VIDEO_ID=tpv.VIDEO_ID
+     and tpv.POST_ID=#{postId}
+    </select>
+
+</mapper>
