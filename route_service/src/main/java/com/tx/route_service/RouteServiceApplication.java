@@ -71,11 +71,11 @@ public class RouteServiceApplication extends SpringBootServletInitializer {
      * 注册servlet 请求映射
      * @return
      */
-    @Bean
-    protected ServletRegistrationBean registrationBean(){
-        return new ServletRegistrationBean(new TxvServlet(),"/Txv/*");
-
-    }
+//    @Bean
+//    protected ServletRegistrationBean registrationBean(){
+//        return new ServletRegistrationBean(new TxvServlet(),"/Txv/*");
+//
+//    }
 
     /**
      * 创建跨域配置项
