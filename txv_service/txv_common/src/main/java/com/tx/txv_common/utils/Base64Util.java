@@ -3,8 +3,10 @@ package com.tx.txv_common.utils;
 
 
 import lombok.extern.slf4j.Slf4j;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+
+import java.util.Base64;
+import java.util.Base64.Decoder;
+import java.util.Base64.Encoder;
 
 import java.io.*;
 
@@ -39,8 +41,8 @@ public class Base64Util {
             }
         }
         if(by!=null){
-            BASE64Encoder be=new BASE64Encoder();
-            ret = be.encode(by);
+            Encoder be = Base64.getEncoder();
+            ret = be.encodeToString(by);
 
         }
         return ret;
@@ -54,11 +56,11 @@ public class Base64Util {
      */
     public static  byte[] stringBase64ToByte(String base64Vlaue){
         String value = null;
-        BASE64Decoder decoder = new BASE64Decoder();
+        Decoder decoder =Base64.getDecoder();
         byte[] bytes=null;
         try {
             value = new String(base64Vlaue.getBytes(), "UTF-8");
-            bytes= decoder.decodeBuffer(value);
+            bytes= decoder.decode(value);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e){
@@ -80,11 +82,11 @@ public class Base64Util {
     public static boolean GenerateImage(String base64Value, String imgFilePath) {// 对字节数组字符串进行Base64解码并生成图片
         if (base64Value == null) // 图像数据为空
             return false;
-        BASE64Decoder decoder = new BASE64Decoder();
+        Decoder decoder = Base64.getDecoder();
         OutputStream out =null;
         try {
             // Base64解码
-            byte[] bytes = decoder.decodeBuffer(base64Value);
+            byte[] bytes = decoder.decode(base64Value);
             for (int i = 0; i < bytes.length; ++i) {
                 if (bytes[i] < 0) {// 调整异常数据
                     bytes[i] += 256;
