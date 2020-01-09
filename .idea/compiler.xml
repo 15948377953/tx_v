@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="route_service" />
+        <module name="txv_common" />
+        <module name="txv_intf" />
+        <module name="txv_provider" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="route_service" target="1.8" />
+      <module name="txv_common" target="1.8" />
+      <module name="txv_intf" target="1.8" />
+      <module name="txv_provider" target="1.8" />
+      <module name="txv_service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

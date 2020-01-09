@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/route_service/route_service.iml" filepath="$PROJECT_DIR$/route_service/route_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tx_v.iml" filepath="$PROJECT_DIR$/.idea/tx_v.iml" />
+      <module fileurl="file://$PROJECT_DIR$/txv_service/txv_common/txv_common.iml" filepath="$PROJECT_DIR$/txv_service/txv_common/txv_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/txv_service/txv_intf/txv_intf.iml" filepath="$PROJECT_DIR$/txv_service/txv_intf/txv_intf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/txv_service/txv_provider/txv_provider.iml" filepath="$PROJECT_DIR$/txv_service/txv_provider/txv_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/txv_service/txv_service.iml" filepath="$PROJECT_DIR$/txv_service/txv_service.iml" />
+    </modules>
+  </component>
+</project>

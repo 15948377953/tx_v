@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="txv_provider:war">
+    <output-path>$PROJECT_DIR$/txv_service/txv_provider/target</output-path>
+    <root id="archive" name="txv_provider-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="txv_provider:war exploded" />
+    </root>
+  </artifact>
+</component>

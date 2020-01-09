@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/route_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/txv_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/txv_service/txv_common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/txv_service/txv_intf" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/txv_service/txv_provider" charset="UTF-8" />
+  </component>
+</project>
